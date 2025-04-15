@@ -1,0 +1,107 @@
+{
+  "name": "taskDemo",
+  "displayName": "taskDemo",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.1"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "taskDemo",
+          "title": "Task Demo",
+          "icon": "media/dep.svg"
+        }
+      ]
+    },
+    "views": {
+      "taskDemo": [
+        {
+          "id": "taskView",
+          "name": "任务目录"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "taskDemo.addFileToTask",
+        "title": "Add File to Task"
+      },
+      {
+        "command": "taskDemo.newTask",
+        "title": "New Task"
+      },
+      {
+        "command": "taskDemo.removeTask",
+        "title": "Remove Task"
+      },
+      {
+        "command": "taskDemo.removeFile",
+        "title": "Remove File"
+      },
+      {
+        "command": "taskDemo.commitTask",
+        "title": "Git Commit"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "taskDemo.addFileToTask"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "taskDemo.addFileToTask"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "taskDemo.newTask",
+          "when": "view == taskView",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "taskDemo.removeTask",
+          "when": "view == taskView && viewItem == task"
+        },
+        {
+          "command": "taskDemo.removeFile",
+          "when": "view == taskView && viewItem == file"
+        },
+        {
+          "command": "taskDemo.commitTask",
+          "when": "view == taskView && viewItem == task"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.1",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.6",
+    "@vscode/test-electron": "^2.3.9"
+  }
+}

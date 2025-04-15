@@ -1,0 +1,12 @@
+# 编译输出
+out/
+dist/
+
+# 依赖
+node_modules/
+
+# VS Code 扩展打包文件
+*.vsix
+
+# 其他
+.DS_Store
